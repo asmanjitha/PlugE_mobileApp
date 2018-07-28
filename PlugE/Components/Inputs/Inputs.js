@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
-import { Actions } from 'react-native-router-flux';
+import React, {Component} from 'react'
+import {View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native'
+import {Actions} from 'react-native-router-flux';
 
 class Inputs extends Component {
 
@@ -9,68 +9,85 @@ class Inputs extends Component {
         password: ''
     };
     handleEmail = (text) => {
-    this.setState({ email: text })
-}
-handlePassword = (text) => {
-    this.setState({ password: text })
-}
-login = (email, pass) => {
-    alert('email: ' + email + ' password: ' + pass)
-}
-render(){
-    return (
-        <View style = {styles.container}>
-            <TextInput style = {styles.input}
-                       underlineColorAndroid = "transparent"
-                       placeholder = "Email"
-                       placeholderTextColor = "#3498db"
-                       autoCapitalize = "none"
-                       onChangeText = {this.handleEmail}/>
+        this.setState({email: text})
+    }
+    handlePassword = (text) => {
+        this.setState({password: text})
+    }
+    login = (email, pass) => {
+        alert('email: ' + email + ' password: ' + pass)
+    }
 
-            <TextInput style = {styles.input}
-                       underlineColorAndroid = "transparent"
-                       placeholder = "Password"
-                       placeholderTextColor = "#3498db"
-                       secureTextEntry = {true}
-                       autoCapitalize = "none"
-                       onChangeText = {this.handlePassword}/>
+    render() {
+        return (
+            <View style={styles.container}>
+                <TextInput style={styles.input}
+                           underlineColorAndroid="transparent"
+                           placeholder="Email"
+                           placeholderTextColor="#3498db"
+                           autoCapitalize="none"
+                           onChangeText={this.handleEmail}/>
 
-            <TouchableOpacity
-                style = {styles.submitButton}
-                onPress = {
-                    () => Actions.Home()
+                <TextInput style={styles.input}
+                           underlineColorAndroid="transparent"
+                           placeholder="Password"
+                           placeholderTextColor="#3498db"
+                           secureTextEntry={true}
+                           autoCapitalize="none"
+                           onChangeText={this.handlePassword}/>
 
-                }>
-                <Text style = {styles.submitButtonText}> Submit </Text>
-            </TouchableOpacity>
-        </View>
-    )
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={
+                        () => Actions.Home()
+
+                    }>
+                    <Text style={styles.submitButtonText}>Sign In</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={
+                        () => Actions.Home()
+
+                    }>
+                    <Text style={styles.submitButtonText}>Sign Up</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
 }
-}
+
 export default Inputs
 
 const styles = StyleSheet.create({
     container: {
         paddingTop: 23,
-        width:'85%'
+        width: '85%'
     },
-    input: {
-        margin: 15,
+    input:{
         height: 40,
-        borderColor: '#3498db',
-        borderWidth: 1,
-
-
+        backgroundColor: 'rgba(225,225,225,0.2)',
+        margin: 15,
+        marginBottom: 5,
+        padding: 10,
+        color: '#000',
+        textAlign: 'center'
     },
     submitButton: {
         backgroundColor: '#3498db',
         padding: 10,
         margin: 15,
-        height: 40,
-
+        marginBottom: 5,
+        height: 40
     },
-    submitButtonText:{
+    submitButtonText: {
         color: 'white',
-        textAlign:'center'
-    }
+        textAlign: 'center'
+    },
+    buttonContainer:{
+        backgroundColor: '#2980b6',
+        margin: 15,
+        paddingVertical: 15
+    },
 })
